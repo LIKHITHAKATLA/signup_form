@@ -1,23 +1,26 @@
-* body {
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f3f7fa;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+    animation: fadeIn 1.2s ease-in-out;
 }
 
 .container {
     background: white;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     width: 350px;
 }
 
 h2 {
     text-align: center;
     color: #003366;
+    margin-bottom: 20px;
 }
 
 .form-group {
@@ -33,11 +36,19 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: 1px solid #ccd6dd;
     border-radius: 6px;
     font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover {
+    border-color: #0056b3;
+    box-shadow: 0 0 6px rgba(0, 86, 179, 0.2);
 }
 
 button {
@@ -49,13 +60,15 @@ button {
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #004494;
+    background-color: #003f8a;
+    transform: scale(1.03);
 }
 
-/* Error and strength message */
+/* Text Feedback */
 .error {
     color: red;
     font-size: 12px;
@@ -65,10 +78,48 @@ button:hover {
     font-size: 12px;
     display: block;
     margin-top: 5px;
-} 
-
-.requirement {
-  font-size: 0.85rem;
-  color: #555;
 }
 
+.requirement {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* Entrance Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        width: 85%;
+        padding: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    button {
+    width: 95%;
+
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .requirement,
+    .strength,
+    .error {
+        font-size: 11px;
+    }
+}
